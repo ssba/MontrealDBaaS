@@ -1,0 +1,68 @@
+<?php
+
+namespace App;
+
+use LaravelArdent\Ardent\Ardent;
+
+class Table extends Ardent
+{
+    /**
+     * Set not incremeniting ID.
+     *
+     * @var boolean
+     */
+    public $incrementing = false;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'tables';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id', 'database', 'name', 'type', 'values', 'default', 'collation', 'attributes', 'NULL', 'index', 'ai', 'comments'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [];
+
+    /**
+     * Validators rules for Ardent validator
+     *
+     * @var array
+     */
+    public static $rules = [
+        'id' => 'required|string|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
+        'database' => 'required|string|exists:databases,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
+        'name' => 'required|string',
+        'type' => 'required|string|in:INT,VARCHAR,TEXT,DATE,TINYINT,SMALLINT,MEDIUMINT,FLOAT,DOUBLE,REAL,BOOLEAN,DATETIME,TIMESTAMP,TIME,YEAR,CHAR,TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT,BINARY,VARBINARY,BLOB,ENUM',
+        'values' => 'required|string',
+        'default' => 'string',
+        'collation' => 'string',
+        'attributes' => 'string',
+        'NULL' => 'boolean',
+        'index' => 'in:PRIMARY,UNIQUE,INDEX,FULLTEXT,SPATIAL',
+        'ai' => 'boolean',
+        'comments' => 'string'
+    ];
+
+
+    // TODO  Belongs to database
+    /**
+     * Get the customer of this database
+     */
+    public function relatedDataBase()
+    {
+        return $this->belongsTo('App\Database','id','database');
+    }
+}

@@ -146,4 +146,31 @@
 }
 ```
 
+## Routes
+
+### Web
+
+
+ * **GET**+**POST** /login
+ * **GET**+**POST** /logout
+ * **GET** /user/{userGUID}
+ * **GET** /user/{userGUID}/stats
+ * **GET** /user/{userGUID}/settings
+ * **POST** /user/{userGUID}/settings/save
+ * **GET** /user/{userGUID}/databases
+ * **GET**+**POST** /user/{userGUID}/databases/create
+ * **GET** /user/{userGUID}/databases/{dbGUID}/
+ * **GET** /user/{userGUID}/databases/{dbGUID}/manage
+ * **POST** /user/{userGUID}/databases/{dbGUID}/manage/save
+ * **GET** /user/{userGUID}/databases/{dbGUID}/tables/
+ * **GET** /user/{userGUID}/databases/{dbGUID}/tables/{tGUID}
+ * **GET** /user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/manage
+ * **POST** /user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/manage/save
+ * **GET**+**POST** /user/{userGUID}/databases/{dbGUID}/cache
+
+### API
+
+
+ * **POST** /api/database/{dbGUID}/request?key=**key**
+
 

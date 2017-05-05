@@ -12,13 +12,87 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+    return [
+        'id' => $faker->uuid,
+        'fname' => $faker->firstName,
+        'lname' => $faker->lastName,
+        'email' => $faker->safeEmail,
+        'password' => bcrypt(1),
+        'gender' => 'm'
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Admin::class, function (Faker\Generator $faker) {
+    return [
+        'id' => $faker->uuid,
+        'fname' => $faker->firstName,
+        'lname' => $faker->lastName,
+        'type' => 'manager',
+        'email' => $faker->safeEmail,
+        'password' => bcrypt(1),
+        'gender' => 'm',
+        'created_at' => $faker->dateTime('now'),
+        'updated_at' => $faker->dateTime('now')
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\CustomerToAdmin::class, function (Faker\Generator $faker) {
+    return [
+        'id' => $faker->uuid,
+        'fname' => $faker->firstName,
+        'lname' => $faker->lastName,
+        'customer' => function () {
+            return factory(App\Customer::class)->create()->id;
+        },
+        'admin' => function () {
+            return factory(App\Admin::class)->create()->id;
+        }
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Database::class, function (Faker\Generator $faker) {
+    return [
+        'id' => $faker->uuid,
+        'customer' => function () {
+            return factory(App\Customer::class)->create()->id;
+        },
+        'charset' => 'utf8',
+        'name' => $faker->word,
+        'collation' => NULL,
+        'options' => '',
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Table::class, function (Faker\Generator $faker) {
+
+    $types = [
+        'INT',
+        'VARCHAR',
+        'TEXT',
+        'DATE',
+        'REAL',
+        'BOOLEAN'
+    ];
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'id' => $faker->uuid,
+        'database' => function () {
+            return factory(App\Database::class)->create()->id;
+        },
+        'name' => $faker->word,
+        'type' => $types[array_rand($types)],
+        'values' => '',
+        'default' => '',
+        'collation' => '',
+        'attributes' => '',
+        'NULL' => false,
+        'index' => NULL,
+        'ai' => NULL,
+        'comments' => ''
     ];
 });
