@@ -150,9 +150,10 @@
 
 ### Web
 
+##### User
 
  * **GET**+**POST** /login
- * **GET**+**POST** /logout
+ * **POST** /logout
  * **GET** /user/{userGUID}
  * **GET** /user/{userGUID}/stats
  * **GET** /user/{userGUID}/settings
@@ -167,9 +168,16 @@
  * **GET** /user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/manage
  * **POST** /user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/manage/save
  * **GET**+**POST** /user/{userGUID}/databases/{dbGUID}/cache
-
+  
+##### Admin
+ 
+ * **GET**+**POST** admin/login
+ * **GET**+**POST** admin/customers
+ * **GET**+**POST** admin/customers/{customerGUID}
+ * **GET**+**POST** admin/customers/{customerGUID}/databases
+ * **GET**+**POST** admin/customers/{customerGUID}/databases/{dbGUID}
+ 
 ### API
-
 
  * **POST** /api/database/{dbGUID}/request?key=**key**
 
