@@ -25,11 +25,13 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Admin::class, function (Faker\Generator $faker) {
+    static $type;
+
     return [
         'id' => $faker->uuid,
         'fname' => $faker->firstName,
         'lname' => $faker->lastName,
-        'type' => 'manager',
+        'type' => in_array($type,['manager', 'superadmin']) ? $type : 'manager' ,
         'email' => $faker->safeEmail,
         'password' => bcrypt(1),
         'gender' => 'm',
