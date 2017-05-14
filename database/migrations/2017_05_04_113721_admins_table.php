@@ -23,6 +23,7 @@ class AdminsTable extends Migration
             $table->string('email')->unique();
             $table->binary('password');
             $table->enum('gender', ['m', 'f']);
+            $table->rememberToken();
             $table->timestamps();
 
         });

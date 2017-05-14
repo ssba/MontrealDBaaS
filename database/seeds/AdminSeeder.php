@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CustomerSeeder::class);
-        $this->call(AdminSeeder::class);
+        factory(App\Admin::class, 1)->create([
+            'type' => 'superadmin',
+        ]);
     }
 }
