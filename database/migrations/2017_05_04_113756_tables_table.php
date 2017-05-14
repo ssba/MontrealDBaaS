@@ -37,7 +37,6 @@ class TablesTable extends Migration
                 'YEAR',
                 'CHAR',
                 'TINYTEXT',
-                'TEXT',
                 'MEDIUMTEXT',
                 'LONGTEXT',
                 'BINARY',

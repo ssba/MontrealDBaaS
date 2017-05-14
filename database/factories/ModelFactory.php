@@ -34,9 +34,7 @@ $factory->define(App\Admin::class, function (Faker\Generator $faker) {
         'type' => in_array($type,['manager', 'superadmin']) ? $type : 'manager' ,
         'email' => $faker->safeEmail,
         'password' => bcrypt(1),
-        'gender' => 'm',
-        'created_at' => $faker->dateTime('now'),
-        'updated_at' => $faker->dateTime('now')
+        'gender' => 'm'
     ];
 });
 
