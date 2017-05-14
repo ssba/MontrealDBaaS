@@ -2,10 +2,20 @@
 
 namespace App;
 
-use LaravelArdent\Ardent\Ardent;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Customer extends Ardent
+class Customer extends Authenticatable
 {
+    use Notifiable;
+
+    /**
+     *
+     *
+     * @var string
+     */
+    protected $guard = 'web_admins';
+
     /**
      * Set not incremeniting ID.
      *

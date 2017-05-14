@@ -2,10 +2,20 @@
 
 namespace App;
 
-use LaravelArdent\Ardent\Ardent;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Ardent
+class Admin extends Authenticatable
 {
+    use Notifiable;
+
+    /**
+     *
+     *
+     * @var string
+     */
+    protected $guard = 'web';
+
     /**
      * Set not incremeniting ID.
      *
@@ -34,7 +44,9 @@ class Admin extends Ardent
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = [
+        'password'
+    ];
 
     /**
      * Validators rules for Ardent validator
