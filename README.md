@@ -182,3 +182,13 @@
  * **POST** /api/database/{dbGUID}/request?key=**key**
 
 
+#### Pages
+ * 404 Error - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/404.html
+ * 500 Error - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/500.html
+ * Lockscreen - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/lockscreen.html
+ * Login(User + Admin) - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/login.html 
+ * Registration - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/register.html
+ * Profile(only for Admin) - https://almsaeedstudio.com/themes/AdminLTE/pages/examples/profile.html
+ * Home - https://almsaeedstudio.com/themes/AdminLTE/index2.html
+ * 
+ *

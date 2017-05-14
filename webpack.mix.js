@@ -11,13 +11,15 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js/main.js')
-   .sass('resources/assets/sass/app.scss', 'public/css/main.css');
+mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
+    .sass('resources/assets/sass/admin.scss', 'public/css/admin.css');
 
-mix.js(['node_modules/jquery.easing/jquery.easing.js', 'resources/assets/js/index.js'], 'public/js/index.js')
-    .sass('resources/assets/sass/index.scss', 'public/css/index.css')
-    .autoload({
-        jquery: ['$', 'jQuery', 'window.jQuery']
-    });
+mix.js('resources/assets/js/index.js', 'public/js/index.js')
+    .sass('resources/assets/sass/index.scss', 'public/css/index.css');
 
 
+/*
+ .minify('public/js/index.js')
+ ;.uglify()
+ .version()
+ */

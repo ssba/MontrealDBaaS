@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./adminLTE.main');
 
 window.Vue = require('vue');
 
@@ -15,7 +16,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('content-header', require('./components/ContentHeader.vue'));
 
 const app = new Vue({
     el: '#app'

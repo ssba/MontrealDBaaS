@@ -1,4 +1,12 @@
-import Bootstrap from 'bootstrap-sass';
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+require('./bootstrap');
+
+import 'jquery.easing';
 
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
