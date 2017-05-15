@@ -192,3 +192,17 @@
  * Home - https://almsaeedstudio.com/themes/AdminLTE/index2.html
  * 
  *
+ 
+ # Защита
+ 
+ Guards
+ 
+    1. Web       - клиенты   
+    2. Web_admin - администраторы
+    
+    
+Попытки внештатных авторизации  и реакция  
+
+* Валидный Customer в валидынй роут при 'middleware' => 'auth:web_admins' : Action : роут => редирект на home юзера - авториризация считается успешно 
+* Валидный Admin в валидынй роут при 'middleware' => 'auth:web' : Action : Вывод ошибки на форме авторизации - авториризация считается проваленной
+* 

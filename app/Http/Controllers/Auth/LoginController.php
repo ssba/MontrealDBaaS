@@ -75,12 +75,17 @@ class LoginController extends Controller
         }
 
         $guardName = 'web';
-        if($request->asadmin)
+        if($request->admin == 'dc179d240785f696cb36662613545ce8')
             $guardName = 'web_admins';
 
-        $guard = Auth::guard($guardName)->check() ? Auth::guard($guardName) : null;
+        try{
+            $guard = Auth::guard($guardName);
+        } catch (\Exception $exception){
+            $guard = null;
+        }
 
         if (!is_null($guard) && $this->attemptLogin($request , $guard)) {
+            $this->redirectTo = route('Main:GetUserPage', ['userGUID' => Auth::user()->id]);
             return $this->sendLoginResponse($request, $guard);
         }
 

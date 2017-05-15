@@ -14,49 +14,38 @@
 define("GUID_REGEXP_PATTERN", '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$');
 
 
+Route::get('/', ['as' => 'IndexPage', function () {
+    return view('index');
+}]);
 
-    Route::group(['middleware' => 'auth:web'], function () {
+Route::group(['as' => 'Auth:'], function () {
 
+    Route::get('/login', ['as' => 'Login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    Route::post('/login', 'Auth\LoginController@login');
 
+    Route::post('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
 
-        Route::get('/test', function () {
-            return view('admin.404');
-        });
-
-
-
-    });
-
-    Route::get('/', ['as' => 'IndexPage', function () {
-        return view('index');
-    }]);
-
-    Route::group(['as' => 'Auth:'], function () {
-
-        Route::get('/login', ['as' => 'Login', 'uses' => 'Auth\LoginController@showLoginForm']);
-        Route::post('/login', 'Auth\LoginController@login');
-
-        Route::post('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
-
-        $this->get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-        $this->post('register', 'Auth\RegisterController@register');
+    Route::get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+    Route::post('register', 'Auth\RegisterController@register');
 
 
-        /*
-         *
+    /*
+     *
 
 
-            // Password Reset Routes...
-            $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-            $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-            $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-            $this->post('password/reset', 'Auth\ResetPasswordController@reset');
-         *
-         * */
+        // Password Reset Routes...
+        $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+        $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+     *
+     * */
 
-    });
+});
 
-    Route::group(['as' => 'MainNSettings'], function () {
+Route::group(['middleware' => 'auth:web_admins,web'], function () {
+
+    Route::group(['as' => 'Main:'], function () {
 
         Route::get('/user/{userGUID}', ['as' => 'GetUserPage', 'uses' => 'UserController@home'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
@@ -141,8 +130,9 @@ define("GUID_REGEXP_PATTERN", '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-
     });
 
 
+});
 
-    Route::group(['as' => 'Admin','middleware' => 'auth:web_admins'], function () {
+Route::group(['as' => 'Admin', 'middleware' => 'auth:web_admins'], function () {
 
     Route::get('admin/login', ['as' => 'AdminLogin', 'uses' => 'AdminController@login']);
     Route::post('admin/login', ['as' => 'AdminLogout', 'uses' => 'AdminController@logout']);

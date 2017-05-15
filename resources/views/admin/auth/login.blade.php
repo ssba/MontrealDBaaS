@@ -47,8 +47,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">As User</button>
-                        <button type="submit" name="asadmin" value="true" class="btn btn-danger btn-block btn-flat">As Admin</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -66,7 +65,9 @@
             <a href="">I forgot my password</a><br>
             <a href="{{ route('Auth:Registration') }}" class="text-center">Register a new membership</a>
 
-            <!--
+            <!--password.request
+user.registr
+
                 {{ route('Auth:Login') }}
             -->
 
