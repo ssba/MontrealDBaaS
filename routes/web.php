@@ -13,27 +13,46 @@
 
 define("GUID_REGEXP_PATTERN", '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$');
 
-Route::group(['as' => 'User'], function () {
 
-    Route::get('/', function () {
-        return view('index');
-    });
 
-    Route::group(['as' => 'LoginLogout'], function () {
+    Route::group(['middleware' => 'auth:web'], function () {
 
-        /**
-         * 'as' => 'GetLoginPage'
-         */
-        Route::get('/login', function () {
 
-            // Closure if not guest than to home
 
-            return view('login');
+        Route::get('/test', function () {
+            return view('admin.404');
         });
 
-        Route::post('/login', ['as' => 'PostLoginingAction', 'uses' => 'Auth\LoginController@login']);
 
-        Route::post('/logout', ['as' => 'PostLogoutingAction', 'uses' => 'Auth\LoginController@logout']);
+
+    });
+
+    Route::get('/', ['as' => 'IndexPage', function () {
+        return view('index');
+    }]);
+
+    Route::group(['as' => 'Auth:'], function () {
+
+        Route::get('/login', ['as' => 'Login', 'uses' => 'Auth\LoginController@showLoginForm']);
+        Route::post('/login', 'Auth\LoginController@login');
+
+        Route::post('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
+
+        $this->get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+        $this->post('register', 'Auth\RegisterController@register');
+
+
+        /*
+         *
+
+
+            // Password Reset Routes...
+            $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+            $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+            $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+            $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+         *
+         * */
 
     });
 
@@ -121,9 +140,9 @@ Route::group(['as' => 'User'], function () {
 
     });
 
-});
 
-Route::group(['as' => 'Admin'], function () {
+
+    Route::group(['as' => 'Admin','middleware' => 'auth:web_admins'], function () {
 
     Route::get('admin/login', ['as' => 'AdminLogin', 'uses' => 'AdminController@login']);
     Route::post('admin/login', ['as' => 'AdminLogout', 'uses' => 'AdminController@logout']);
