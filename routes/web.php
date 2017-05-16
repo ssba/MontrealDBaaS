@@ -61,23 +61,23 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
 
     });
 
-    Route::group(['as' => 'UserDataBase'], function () {
+    Route::group(['as' => 'DataBase:'], function () {
 
-        Route::get('/user/{userGUID}/databases', ['as' => 'GetDataBases', 'uses' => 'DataBaseController@all'])
+        Route::get('/user/{userGUID}/databases', ['as' => 'GetAll', 'uses' => 'DataBaseController@all'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
-
-        /**
-         * 'as' => 'GetDBCreationPage'
-         */
-        Route::get('/user/{userGUID}/databases/create', function () {
-
-            // Closure if not guest than to page
-
-            return view('db/create');
-        })->where('userGUID', GUID_REGEXP_PATTERN);
 
         Route::post('/user/{userGUID}/databases/create', ['as' => 'CreateDatabaseAction', 'uses' => 'DataBaseController@create'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
+
+
+
+
+
+
+
+
+
+
 
         Route::get('/user/{userGUID}/databases/{dbGUID}', ['as' => 'GetDataBase', 'uses' => 'DataBaseController@getSingle'])
             ->where('userGUID', GUID_REGEXP_PATTERN)

@@ -17,6 +17,8 @@ mix.js('resources/assets/js/admin.js', 'public/js/admin.js')
 mix.js('resources/assets/js/index.js', 'public/js/index.js')
     .sass('resources/assets/sass/index.scss', 'public/css/index.css');
 
+mix.js('resources/assets/js/views/admin.db.all.js', 'public/js/alldbs.js')
+    .sass('resources/assets/sass/AdminLTE/admin.db.all.scss', 'public/css/alldbs.css');
 
 /*
  .minify('public/js/index.js')

@@ -11,6 +11,7 @@ class DataBaseController extends Controller
      */
     public function all (string $userGUID, Request $request){
 
+        return view('admin.db.all');
     }
 
     /**

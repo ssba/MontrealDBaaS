@@ -2,5 +2,7 @@
   "/js/admin.js": "/js/admin.js",
   "/css/admin.css": "/css/admin.css",
   "/css/index.css": "/css/index.css",
-  "/js/index.js": "/js/index.js"
+  "/css/alldbs.css": "/css/alldbs.css",
+  "/js/index.js": "/js/index.js",
+  "/js/alldbs.js": "/js/alldbs.js"
 }
