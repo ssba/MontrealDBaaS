@@ -44,6 +44,14 @@
                             <a href="#page-top"></a>
                         </li>
                         <li>
+                            @if (Auth::guest())
+                                <a href="{{ url('/login') }}">Login</a>
+                            @else
+                                <a href="{{ url('/user') }}">Dashboard</a>
+                            @endif
+
+                        </li>
+                        <li>
                             <a class="page-scroll" href="#about">About</a>
                         </li>
                         <li>

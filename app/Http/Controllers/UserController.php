@@ -12,6 +12,7 @@ class UserController extends Controller
      */
     public function home (string $userGUID,  Request $request){
 
+        return view('admin.user.home', ['title' => __('admin.admin_home') ]);
     }
 
     /**

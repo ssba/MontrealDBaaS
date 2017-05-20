@@ -29,7 +29,7 @@ desired effect
 
         <header class="main-header">
 
-            <a href="index2.html" class="logo">
+            <a href="{{  route('Main:GetUserPage', ['userGUID' => Auth::user()->id])  }}" class="logo">
                 <span class="logo-mini"><b>M</b>Db</span>
                 <span class="logo-lg"><b>Montreal</b>DBaaS</span>
             </a>
@@ -103,17 +103,46 @@ desired effect
 
                 <ul class="sidebar-menu">
                     <li class="header">Menu</li>
-                    <li class="active"><a href="{{  route('DataBase:GetAll', ['userGUID' => Auth::user()->id])  }}"><i class="fa fa-pie-chart"></i> <span>DataBases</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+                    <li class=" @yield('admin.user.home.menu_activation_state') ">
+                        <a href="{{  route('Main:GetUserPage', ['userGUID' => Auth::user()->id])  }}">
+                            <i class="fa fa-home"></i>
+                            <span>{{ __('admin.admin_home') }}</span>
+                        </a>
+                    </li>
+                    <li class=" @yield('admin.user.stats.menu_activation_state') ">
+                        <a href="{{  route('Main:GetUserStatPage', ['userGUID' => Auth::user()->id])  }}">
+                            <i class="fa fa-rocket"></i>
+                            <span>{{ __('admin.admin_stats') }}</span>
+                        </a>
+                    </li>
+                    <li class=" @yield('admin.user.settings.menu_activation_state') ">
+                        <a href="{{  route('Main:GetUserSettings', ['userGUID' => Auth::user()->id])  }}">
+                            <i class="fa fa-cog"></i>
+                            <span>{{ __('admin.admin_settings') }}</span>
+                        </a>
+                    </li>
+                    <li class=" @yield('admin.user.databases.menu_activation_state') ">
+                        <a href="{{  route('DataBase:GetAll', ['userGUID' => Auth::user()->id])  }}">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>DataBases</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
+
+                            <li class=" @yield('admin.user.databases.menu_activation_state') ">
+                                <a href="{{  route('DataBase:GetAll', ['userGUID' => Auth::user()->id])  }}">
+                                    <i class="fa fa-database"></i> <span>DB List</span>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="{{  route('DataBase:GetAll', ['userGUID' => Auth::user()->id])  }}#create.database">
+                                    <i class="fa fa-plus-circle"></i> <span>Create Database</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -133,16 +162,19 @@ desired effect
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                DBaaS Application based on <a href="https://github.com/almasaeed2010/AdminLTE">AdminLTE</a> and <a href="https://github.com/BlackrockDigital/startbootstrap">GRAYSCALE</a> templates
+                DBaaS Application based on <a href="https://github.com/almasaeed2010/AdminLTE">AdminLTE</a> and <a
+                        href="https://github.com/BlackrockDigital/startbootstrap">GRAYSCALE</a> templates
             </div>
-            <strong>Copyright &copy; {{ date("Y") }} <a href="#">ssba.work/dbaas</a>.</strong> All rights reserved by MIT License.
+            <strong>Copyright &copy; {{ date("Y") }} <a href="#">ssba.work/dbaas</a>.</strong> All rights reserved by
+            MIT License.
         </footer>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
             <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a>
+                </li>
                 <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
             </ul>
             <!-- Tab panes -->

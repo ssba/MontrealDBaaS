@@ -47,7 +47,7 @@ class Database extends Ardent
         'charset' => 'string',
         'name' => 'required|string',
         'collation' => 'string',
-        'options' => 'text'
+        'options' => 'string|nullable'
     ];
 
     /**

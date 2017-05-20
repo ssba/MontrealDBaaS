@@ -1,6 +1,7 @@
 
 
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss";
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 @import "node_modules/ionicons/dist/scss/ionicons.scss";
 
@@ -10,3 +11,48 @@
 
 @import "./AdminLTE/main.css";
 @import "./AdminLTE/skins.css";
+// Rename to original
+
+a.ctrlPanel {
+
+  font-size: 20px;
+  padding: 5px;
+
+}
+
+a.ctrlPanel#deleteDB  {
+  color: #d9534f;
+
+  &:hover {
+    color: #bf5e59;
+  }
+}
+
+a.ctrlPanel#editDB  {
+  color: #f0ad4e;
+
+  &:hover {
+    color: #d6954c;
+  }
+}
+
+a.ctrlPanel#gotoTbl  {
+  color: #5cb85c;
+
+  &:hover {
+    color: #519e51;
+  }
+}
+
+a.ctrlPanel#DBcache  {
+  color: #5bc0de;
+
+  &:hover {
+    color: #5ba5c4;
+  }
+}
+
+table#DataBaseAllLists > tbody > tr > td:nth-child(5){
+  text-align: center
+}
+

@@ -66,18 +66,8 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
         Route::get('/user/{userGUID}/databases', ['as' => 'GetAll', 'uses' => 'DataBaseController@all'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
 
-        Route::post('/user/{userGUID}/databases/create', ['as' => 'CreateDatabaseAction', 'uses' => 'DataBaseController@create'])
+        Route::post('/user/{userGUID}/databases/create', ['as' => 'CreateDatabase', 'uses' => 'DataBaseController@create'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
-
-
-
-
-
-
-
-
-
-
 
         Route::get('/user/{userGUID}/databases/{dbGUID}', ['as' => 'GetDataBase', 'uses' => 'DataBaseController@getSingle'])
             ->where('userGUID', GUID_REGEXP_PATTERN)
@@ -87,13 +77,17 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN);
 
+        Route::get('/user/{userGUID}/databases/{dbGUID}/delete', ['as' => 'DeleteDataBase', 'uses' => 'DataBaseController@deleteSingle'])
+            ->where('userGUID', GUID_REGEXP_PATTERN)
+            ->where('dbGUID', GUID_REGEXP_PATTERN);
+
         Route::post('/user/{userGUID}/databases/{dbGUID}/manage/save', ['as' => 'ManageDataBaseAction', 'uses' => 'DataBaseController@editSingleSave'])
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN);
 
     });
 
-    Route::group(['as' => 'DataBaseTables'], function () {
+    Route::group(['as' => 'DataBaseTables:'], function () {
 
 
         Route::get('/user/{userGUID}/databases/{dbGUID}/tables', ['as' => 'GetDataTables', 'uses' => 'DataBaseController@getAllTables'])
@@ -106,6 +100,11 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
             ->where('tGUID', GUID_REGEXP_PATTERN);
 
         Route::get('/user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/manage', ['as' => 'ManageDataTable', 'uses' => 'DataBaseController@editSingleTable'])
+            ->where('userGUID', GUID_REGEXP_PATTERN)
+            ->where('dbGUID', GUID_REGEXP_PATTERN)
+            ->where('tGUID', GUID_REGEXP_PATTERN);
+
+        Route::get('/user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/delete', ['as' => 'ManageDataTable', 'uses' => 'DataBaseController@deleteSingleTable'])
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN)
             ->where('tGUID', GUID_REGEXP_PATTERN);
@@ -158,3 +157,12 @@ Route::group(['as' => 'Admin', 'middleware' => 'auth:web_admins'], function () {
         ->where('dbGUID', GUID_REGEXP_PATTERN);
 
 });
+
+
+/******************************/
+// Redirects
+
+
+Route::get('/user', ['as' => 'GetUserPageAlias_1', function () {
+    return redirect()->route('Main:GetUserPage', ['userGUID' => Auth::user()->id]);
+}]);

@@ -21,9 +21,6 @@
                 required: false,
                 default: false
             }
-        },
-        mounted() {
-            console.log('Component mounted.')
         }
     }
 </script>
