@@ -206,3 +206,21 @@
 * Валидный Customer в валидынй роут при 'middleware' => 'auth:web_admins' : Action : роут => редирект на home юзера - авториризация считается успешно 
 * Валидный Admin в валидынй роут при 'middleware' => 'auth:web' : Action : Вывод ошибки на форме авторизации - авториризация считается проваленной
 * 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://php.net/manual/ru/com.installation.php
+Class 'COM' not found 

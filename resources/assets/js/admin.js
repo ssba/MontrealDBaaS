@@ -18,6 +18,7 @@ window.Vue = require('vue');
 
 Vue.component('content-header', require('./components/ContentHeader.vue'));
 Vue.component('create-db-form', require('./components/CreateDBForm.vue'));
+Vue.component('edit-db-form', require('./components/EditDBForm.vue'));
 
 const app = new Vue({
     el: '#app'

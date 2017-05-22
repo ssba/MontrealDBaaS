@@ -20,6 +20,7 @@ mix.js('resources/assets/js/index.js', 'public/js/index.js')
 mix.js('resources/assets/js/views/admin.db.all.js', 'public/js/alldbs.js')
     .sass('resources/assets/sass/AdminLTE/admin.db.all.scss', 'public/css/alldbs.css');
 
+mix.js('resources/assets/js/views/admin.home.js', 'public/js/home.js');
 /*
  .minify('public/js/index.js')
  ;.uglify()

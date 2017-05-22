@@ -23,10 +23,10 @@ Route::group(['as' => 'Auth:'], function () {
     Route::get('/login', ['as' => 'Login', 'uses' => 'Auth\LoginController@showLoginForm']);
     Route::post('/login', 'Auth\LoginController@login');
 
-    Route::post('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
+    Route::get('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
 
-    Route::get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-    Route::post('register', 'Auth\RegisterController@register');
+    Route::get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']); // TODO
+    Route::post('register', 'Auth\RegisterController@register'); // TODO
 
 
     /*
@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN);
 
-        Route::get('/user/{userGUID}/databases/{dbGUID}/delete', ['as' => 'DeleteDataBase', 'uses' => 'DataBaseController@deleteSingle'])
+        Route::post('/user/{userGUID}/databases/{dbGUID}/delete', ['as' => 'DeleteDataBase', 'uses' => 'DataBaseController@deleteSingle'])
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN);
 
@@ -104,7 +104,7 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
             ->where('dbGUID', GUID_REGEXP_PATTERN)
             ->where('tGUID', GUID_REGEXP_PATTERN);
 
-        Route::get('/user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/delete', ['as' => 'ManageDataTable', 'uses' => 'DataBaseController@deleteSingleTable'])
+        Route::post('/user/{userGUID}/databases/{dbGUID}/tables/{tGUID}/delete', ['as' => 'ManageDataTable', 'uses' => 'DataBaseController@deleteSingleTable'])
             ->where('userGUID', GUID_REGEXP_PATTERN)
             ->where('dbGUID', GUID_REGEXP_PATTERN)
             ->where('tGUID', GUID_REGEXP_PATTERN);

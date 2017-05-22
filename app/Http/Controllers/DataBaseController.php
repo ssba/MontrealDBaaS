@@ -115,9 +115,15 @@ class DataBaseController extends Controller
     /**
      *
      */
-    public function editSingle(string $userGUID, string $dbGUID, Request $request)
+    public function editSingle(string $userGUID, string $dbGUID)
     {
+        $database = Database::where('id', $dbGUID)->where('customer', $userGUID)->firstOrFail();
 
+        JavaScript::put([
+            'DBCharsets' => $this->charsets
+        ]);
+
+        return view('admin.db.edit', ['database' => $database, 'title' => __('admin.getAllDBs_edit_db')]);
     }
 
     /**
@@ -125,7 +131,49 @@ class DataBaseController extends Controller
      */
     public function editSingleSave(string $userGUID, string $dbGUID, Request $request)
     {
+        $database = Database::where('id', $dbGUID)->where('customer', $userGUID)->firstOrFail();
 
+        DB::transaction(function () use ($request, $database, $userGUID) {
+
+            $databaseRequest = $request->only( 'charset', 'collation', 'options');
+            if (!empty( array_filter($databaseRequest) )) {
+
+                $database_update = $database->update( $databaseRequest );
+
+                if(!$database_update)
+                    throw new ValidationException($database_update->errors());
+
+                $database_name = md5($request->name . $userGUID);
+                $query = "ALTER DATABASE " . $database_name . " CHARACTER SET " . $request->charset . " COLLATE " . $request->collation;
+                DB::connection('mysql')->unprepared($query);
+            }
+
+        });
+
+        return 1;
+    }
+
+
+    /**
+     *
+     */
+    public function deleteSingle(string $userGUID, string $dbGUID)
+    {
+        $database = Database::where('id', $dbGUID)->where('customer', $userGUID)->firstOrFail();
+
+        DB::transaction(function () use ($database, $userGUID) {
+
+            $name = md5($database->name . $userGUID);
+            $query = "DROP DATABASE IF EXISTS " . $name;
+
+            DB::connection('mysql')->unprepared($query);
+
+            $database->delete();
+
+        });
+
+
+        return 1;
     }
 
     /**
