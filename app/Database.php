@@ -46,7 +46,7 @@ class Database extends Ardent
         'customer' => 'required|string|exists:customers,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
         'charset' => 'string',
         'name' => 'required|string',
-        'collation' => 'string',
+        'collation' => 'string|nullable',
         'options' => 'string|nullable'
     ];
 
