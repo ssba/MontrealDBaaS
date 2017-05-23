@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\CPUStats;
+namespace App\Helpers\CustomerActions;
 
 class CustomerActions
 {

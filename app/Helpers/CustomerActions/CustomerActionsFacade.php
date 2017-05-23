@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\GUID;
+namespace App\Helpers\CustomerActions;
 
 use Illuminate\Support\Facades\Facade;
 
