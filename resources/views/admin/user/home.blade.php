@@ -19,7 +19,6 @@
     <script src="/js/home.js"></script>
 @endsection
 
-
 @section('content')
 
     <section class="content">
@@ -29,7 +28,7 @@
                     <span class="info-box-icon bg-aqua"><i class="fa fa-cog"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">CPU Traffic</span>
-                        <span class="info-box-number">90<small>%</small></span>
+                        <span class="info-box-number">{{ $data['cpu'] }}<small>%</small></span>
                     </div>
                 </div>
             </div>
@@ -39,7 +38,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">RAM In use</span>
-                        <span class="info-box-number">14<small>%</small></span>
+                        <span class="info-box-number">{{ $data['ram'] }}<small>%</small></span>
                     </div>
                 </div>
             </div>
@@ -50,7 +49,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total Databases</span>
-                        <span class="info-box-number">8</span>
+                        <span class="info-box-number">{{ $data['db'] }}</span>
                     </div>
                 </div>
             </div>
@@ -60,7 +59,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Total Queries</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-number">{{ number_format($data['requests']) }}</span>
                     </div>
                 </div>
             </div>

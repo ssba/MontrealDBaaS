@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\GUID;
+namespace App\Helpers\CPUStats;
 
 use Illuminate\Support\Facades\Facade;
 

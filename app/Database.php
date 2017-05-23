@@ -57,4 +57,12 @@ class Database extends Ardent
     {
         return $this->belongsTo('App\Customer','id','customer');
     }
+
+    /**
+     * Get the request stats of this database
+     */
+    public function stats()
+    {
+        return $this->hasMany('App\RequestStats','database');
+    }
 }

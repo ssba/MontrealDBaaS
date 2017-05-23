@@ -232,9 +232,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'CPUStats' => App\Helpers\CPUStats\CPUStatsServiceProvider::class,
-        'CustomerActions' => App\Helpers\CustomerActions\CustomerActionsServiceProvider::class,
-        'RequestStats' => App\Helpers\RequestStats\RequestStatsServiceProvider::class,
+
+        'CPUStats' => App\Helpers\CPUStats\CPUStatsFacade::class,
+        'CustomerActions' => App\Helpers\CustomerActions\CustomerActionsFacade::class,
+        'RequestStats' => App\Helpers\RequestStats\RequestStatsFacade::class,
     ],
 
 ];
