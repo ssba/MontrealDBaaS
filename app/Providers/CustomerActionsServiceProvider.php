@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class CustomerActionsServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class CustomerActionsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind('CustomerActions', function()
+        {
+            return new \App\Helpers\CustomerActions\CustomerActions;
+        });
     }
 }

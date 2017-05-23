@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class RequestStatsServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class RequestStatsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind('RequestStats', function()
+        {
+            return new \App\Helpers\RequestStats\RequestStats;
+        });
     }
 }

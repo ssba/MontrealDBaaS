@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class CPUStatsServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class CPUStatsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind('CPUStats', function()
+        {
+            return new \App\Helpers\CPUStats\CPUStats;
+        });
     }
 }
