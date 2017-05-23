@@ -178,7 +178,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        App\Providers\CPUStatsServiceProvider::class,
+        App\Providers\CustomerActionsServiceProvider::class,
+        App\Providers\RequestStatsServiceProvider::class,
     ],
 
     /*
@@ -229,7 +232,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'CPUStats' => App\Helpers\CPUStats\CPUStatsServiceProvider::class,
+        'CustomerActions' => App\Helpers\CustomerActions\CustomerActionsServiceProvider::class,
+        'RequestStats' => App\Helpers\RequestStats\RequestStatsServiceProvider::class,
     ],
 
 ];
