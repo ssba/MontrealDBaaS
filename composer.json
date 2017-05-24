@@ -9,6 +9,7 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "barryvdh/laravel-ide-helper": "^2.2",
         "doctrine/dbal": "~2.3",
+        "jenssegers/agent": "^2.5",
         "justinrainbow/json-schema": "~2.0",
         "laracasts/utilities": "~2.0",
         "laravel/framework": "5.4.*",
@@ -16,6 +17,7 @@
         "laravelbook/ardent": "^3.4",
         "linfo/linfo": "^3.0",
         "predis/predis": "^1.1",
+        "torann/geoip": "^1.0",
         "webpatser/laravel-uuid": "2.*"
     },
     "require-dev": {

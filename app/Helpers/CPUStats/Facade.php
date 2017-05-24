@@ -2,9 +2,9 @@
 
 namespace App\Helpers\CPUStats;
 
-use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Facade as _Facade;
 
-class CPUStatsFacade extends Facade
+class Facade extends _Facade
 {
     protected static function getFacadeAccessor()
     {

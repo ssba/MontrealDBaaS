@@ -24,8 +24,11 @@ class RequestsStatsTable extends Migration
             $table->uuid('database');
             $table->string('ip');
             $table->string('country');
-            $table->string('deviceFamily');
-            $table->string('deviceModel');
+            $table->string('city');
+            $table->double('lat', 10, 6);
+            $table->double('lon', 10, 6);
+            $table->string('os');
+            $table->string('browser');
             $table->unsignedInteger('responseCode');
             $table->boolean('responseError');
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

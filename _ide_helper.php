@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.23 on 2017-05-23.
+ * Generated for Laravel 5.4.23 on 2017-05-24.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12024,6 +12024,97 @@ namespace Barryvdh\Debugbar {
     }         
 }
     
+namespace App\Helpers\CPUStats {
+
+    class Facade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getInterval1Hour()
+        {
+            return \App\Helpers\CPUStats\CPUStats::getInterval1Hour();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getInterval30Minutes()
+        {
+            return \App\Helpers\CPUStats\CPUStats::getInterval30Minutes();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getInterval10Minutes()
+        {
+            return \App\Helpers\CPUStats\CPUStats::getInterval10Minutes();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getInterval5Minutes()
+        {
+            return \App\Helpers\CPUStats\CPUStats::getInterval5Minutes();
+        }
+        
+    }         
+}
+    
+namespace App\Helpers\CustomerActions {
+
+    class CustomerActionsFacade {
+        
+    }         
+}
+    
+namespace App\Helpers\RequestStats {
+
+    class RequestStatsFacade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getMonthlyVisitors($databases = array())
+        {
+            return \App\Helpers\RequestStats\RequestStats::getMonthlyVisitors($databases);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getVisitorsGeolotaion($databases = array(), $interval = 30, $prepareForJVectormap = false)
+        {
+            return \App\Helpers\RequestStats\RequestStats::getVisitorsGeolotaion($databases, $interval, $prepareForJVectormap);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getMethodsStats($databases = array(), $interval = 30)
+        {
+            return \App\Helpers\RequestStats\RequestStats::getMethodsStats($databases, $interval);
+        }
+        
+    }         
+}
+    
 namespace Laracasts\Utilities\JavaScript {
 
     class JavaScriptFacade {
@@ -14109,6 +14200,12 @@ namespace {
     class Uuid extends \Webpatser\Uuid\Uuid {}
     
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
+    
+    class CPUStats extends \App\Helpers\CPUStats\Facade {}
+    
+    class CustomerActions extends \App\Helpers\CustomerActions\CustomerActionsFacade {}
+    
+    class RequestStats extends \App\Helpers\RequestStats\RequestStatsFacade {}
     
     class JavaScript extends \Laracasts\Utilities\JavaScript\JavaScriptFacade {}
     

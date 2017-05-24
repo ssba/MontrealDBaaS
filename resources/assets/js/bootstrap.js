@@ -14,6 +14,7 @@ try {
     require('datatables.net');
     require('datatables.net-bs');
     require('jquery-slimscroll');
+    require('jquery-mousewheel');
     require('fastclick');
 
 } catch (e) {}

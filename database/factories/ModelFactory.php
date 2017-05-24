@@ -13,11 +13,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Customer::class, function (Faker\Generator $faker) {
+    static $email;
+
     return [
         'id' => $faker->uuid,
         'fname' => $faker->firstName,
         'lname' => $faker->lastName,
-        'email' => $faker->safeEmail,
+        'email' => $email ?: $faker->safeEmail,
         'password' => bcrypt(1),
         'gender' => 'm'
     ];
@@ -146,20 +148,7 @@ $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
         'graph'
     ];
 
-    $device = [
-        'Apple' => [
-            'iPad',
-            'iPhone',
-            'Macbook'
-        ],
-
-        'Microsoft' => [
-            'Surface',
-            'PC'
-        ]
-    ];
-
-    $family = array_rand($device);
+    $eee = 0;
 
     return [
         'method' => $methods[array_rand($methods)],
@@ -169,10 +158,14 @@ $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
         },
         'ip' => $faker->ipv4,
         'country' => $faker->country,
-        'deviceFamily' => $family,
-        'deviceModel' => $device[$family][array_rand( $device[$family] )],
+        'city' => $faker->city,
+        'lat' => $faker->latitude,
+        'lon' => $faker->longitude,
+        'os' => array_rand(\RequestStats::getOS()),
+        'browser' => array_rand(\RequestStats::getBrowsers()),
         'responseCode' => '200',
-        'responseError' => false
+        'responseError' => false,
+        'created_at' => $faker->dateTimeBetween('-1 month', 'now')
     ];
 
 });

@@ -53,8 +53,8 @@ class RequestStats extends Ardent
         'database' => 'required|string|exists:databases,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
         'ip' => 'required|string|ipv4',
         'country' => 'required|string',
-        'deviceFamily' => 'required|string',
-        'deviceModel' => 'required|string',
+        'os' => 'required|string',
+        'browser' => 'required|string',
         'responseCode' => 'required|int',
         'responseError' => 'required|boolean',
 

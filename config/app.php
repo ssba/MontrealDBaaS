@@ -233,7 +233,7 @@ return [
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
-        'CPUStats' => App\Helpers\CPUStats\CPUStatsFacade::class,
+        'CPUStats' => App\Helpers\CPUStats\Facade::class,
         'CustomerActions' => App\Helpers\CustomerActions\CustomerActionsFacade::class,
         'RequestStats' => App\Helpers\RequestStats\RequestStatsFacade::class,
     ],
