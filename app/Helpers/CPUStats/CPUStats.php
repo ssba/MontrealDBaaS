@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Helpers\CPUStats;
-use App\CPUStats as CPUStatsModel;
+use App\CPUStat as CPUStatsModel;
 use DB;
 
 class CPUStats

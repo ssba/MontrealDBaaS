@@ -7,6 +7,7 @@ use JavaScript;
 use App\Database;
 use App\RequestStats;
 use CPUStats as CPUStatsHelper;
+use CustomerActions as CustomerActionsHelper;
 use RequestStats as RequestStatsHelper;
 use Linfo\Linfo;
 
@@ -17,7 +18,6 @@ class UserController extends Controller
      *
      */
     public function home (string $userGUID,  Request $request){
-
 
         $linfo = new Linfo;
         $affectedID = [];
@@ -34,7 +34,8 @@ class UserController extends Controller
             "db" => Database::where('customer', $userGUID)->count(),
             "requests" => RequestStats::whereIn('database', $affectedID)->count(),
             "methods_sats" => RequestStatsHelper::getMethodsStats($affectedID, 7),
-            "browsers" => RequestStatsHelper::getBrowserStats($affectedID, 7)
+            "browsers" => RequestStatsHelper::getBrowserStats($affectedID, 7),
+            "actions" => CustomerActionsHelper::getActions()
         ];
 
         $MonthlyVisitors = RequestStatsHelper::getMonthlyVisitors($affectedID);
