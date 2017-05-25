@@ -60,4 +60,11 @@ class Customer extends Authenticatable
         'gender' => 'required|string|min:1|max:1|in:m,f',
     ];
 
+    /**
+     * Get the links of the Admins
+     */
+    public function customerRelationships()
+    {
+        return $this->hasMany('App\CustomerToAdmin','customer','id');
+    }
 }

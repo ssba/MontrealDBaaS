@@ -56,13 +56,19 @@ class Table extends Ardent
         'comments' => 'string'
     ];
 
-
-    // TODO  Belongs to database
     /**
      * Get the customer of this database
      */
     public function relatedDataBase()
     {
         return $this->belongsTo('App\Database','id','database');
+    }
+
+    /**
+     * Get the customer actions of this database
+     */
+    public function actions()
+    {
+        return $this->hasMany('App\CustomerAction','table');
     }
 }

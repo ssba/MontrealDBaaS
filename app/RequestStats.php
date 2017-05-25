@@ -60,4 +60,11 @@ class RequestStats extends Ardent
 
     ];
 
+    /**
+     * Get the customer of this database
+     */
+    public function relatedDataBase()
+    {
+        return $this->belongsTo('App\Database','id','database');
+    }
 }

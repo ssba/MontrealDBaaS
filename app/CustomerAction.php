@@ -4,7 +4,7 @@ namespace App;
 
 use LaravelArdent\Ardent\Ardent;
 
-class CustomerActions extends Ardent
+class CustomerAction extends Ardent
 {
     public $timestamps = false;
 
@@ -52,5 +52,27 @@ class CustomerActions extends Ardent
 
     ];
 
+    /**
+     * Get the customer of this database
+     */
+    public function relatedDataBase()
+    {
+        return $this->belongsTo('App\Database','database');
+    }
 
+    /**
+     * Get the customer of this database
+     */
+    public function relatedTable()
+    {
+        return $this->belongsTo('App\Table','table');
+    }
+
+    /**
+     * Get the customer of this database
+     */
+    public function relatedCustomer()
+    {
+        return $this->belongsTo('App\Customer','id','database');
+    }
 }

@@ -65,4 +65,20 @@ class Database extends Ardent
     {
         return $this->hasMany('App\RequestStats','database');
     }
+
+    /**
+     * Get the tables of this database
+     */
+    public function tables()
+    {
+        return $this->hasMany('App\Table','database');
+    }
+
+    /**
+     * Get the customer actions of this database
+     */
+    public function actions()
+    {
+        return $this->hasMany('App\CustomerAction','database');
+    }
 }

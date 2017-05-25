@@ -4,7 +4,7 @@ namespace App;
 
 use LaravelArdent\Ardent\Ardent;
 
-class CPUStats extends Ardent
+class CPUStat extends Ardent
 {
     public $timestamps = false;
 
