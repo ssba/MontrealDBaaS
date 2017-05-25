@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.23 on 2017-05-24.
+ * Generated for Laravel 5.4.23 on 2017-05-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12073,14 +12073,44 @@ namespace App\Helpers\CPUStats {
     
 namespace App\Helpers\CustomerActions {
 
-    class CustomerActionsFacade {
+    class Facade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getActions($limit = 5)
+        {
+            return \App\Helpers\CustomerActions\CustomerActions::getActions($limit);
+        }
         
     }         
 }
     
 namespace App\Helpers\RequestStats {
 
-    class RequestStatsFacade {
+    class Facade {
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getBrowsers()
+        {
+            return \App\Helpers\RequestStats\RequestStats::getBrowsers();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getOS()
+        {
+            return \App\Helpers\RequestStats\RequestStats::getOS();
+        }
         
         /**
          * 
@@ -12110,6 +12140,26 @@ namespace App\Helpers\RequestStats {
         public static function getMethodsStats($databases = array(), $interval = 30)
         {
             return \App\Helpers\RequestStats\RequestStats::getMethodsStats($databases, $interval);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getOSStats($databases = array(), $interval = 30)
+        {
+            return \App\Helpers\RequestStats\RequestStats::getOSStats($databases, $interval);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getBrowserStats($databases = array(), $interval = 30)
+        {
+            return \App\Helpers\RequestStats\RequestStats::getBrowserStats($databases, $interval);
         }
         
     }         
@@ -14203,9 +14253,9 @@ namespace {
     
     class CPUStats extends \App\Helpers\CPUStats\Facade {}
     
-    class CustomerActions extends \App\Helpers\CustomerActions\CustomerActionsFacade {}
+    class CustomerActions extends \App\Helpers\CustomerActions\Facade {}
     
-    class RequestStats extends \App\Helpers\RequestStats\RequestStatsFacade {}
+    class RequestStats extends \App\Helpers\RequestStats\Facade {}
     
     class JavaScript extends \Laracasts\Utilities\JavaScript\JavaScriptFacade {}
     
