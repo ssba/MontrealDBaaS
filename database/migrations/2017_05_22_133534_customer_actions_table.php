@@ -19,7 +19,7 @@ class CustomerActionsTable extends Migration
 
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->enum('type', ['edit', 'update', 'delete']);
+            $table->enum('type', ['create', 'edit', 'update', 'delete']);
             $table->uuid('customer');
             $table->uuid('database')->nullable();
             $table->uuid('table')->nullable();
@@ -27,6 +27,7 @@ class CustomerActionsTable extends Migration
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign('customer')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('database')->references('id')->on('databases')->onDelete('cascade');
+            $table->foreign('table')->references('id')->on('tables')->onDelete('cascade');
 
         });
     }

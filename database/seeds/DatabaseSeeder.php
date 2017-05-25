@@ -26,12 +26,13 @@ class DatabaseSeeder extends Seeder
             'customer' => $customer->id,
         ]);
 
-        factory(App\CPUStats::class, 36)->create();
-        factory(App\RequestStats::class, rand(500, 700))->create([
+        factory(App\CPUStat::class, 36)->create();
+
+        factory(App\RequestStats::class, rand(100, 110))->create([
             'database' => $database->id,
         ]);
 
-        factory(App\CustomerActions::class, rand(50,110))->create([
+        factory(App\CustomerAction::class, rand(50,110))->create([
             'customer' => $customer->id,
         ]);
 

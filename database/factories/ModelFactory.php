@@ -102,7 +102,7 @@ $factory->define(App\Table::class, function (Faker\Generator $faker) {
 });
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\CPUStats::class, function (Faker\Generator $faker) {
+$factory->define(App\CPUStat::class, function (Faker\Generator $faker) {
     static $loading;
 
     switch ($loading){
@@ -134,7 +134,7 @@ $factory->define(App\CPUStats::class, function (Faker\Generator $faker) {
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
-    static $database;
+    static $database, $real;
 
     $methods = [
         'get',
@@ -148,7 +148,9 @@ $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
         'graph'
     ];
 
-    $eee = 0;
+
+    $ip = $faker->ipv4;
+    $realDataByIP = GeoIP::getLocation($ip);
 
     return [
         'method' => $methods[array_rand($methods)],
@@ -156,11 +158,11 @@ $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
         'database' => $database ?: $database = function () {
             return factory(App\Database::class)->create()->id;
         },
-        'ip' => $faker->ipv4,
-        'country' => $faker->country,
-        'city' => $faker->city,
-        'lat' => $faker->latitude,
-        'lon' => $faker->longitude,
+        'ip' => $ip,
+        'country' => $realDataByIP->country,
+        'city' => $realDataByIP->city,
+        'lat' => $realDataByIP->lat,
+        'lon' => $realDataByIP->lon,
         'os' => array_rand(\RequestStats::getOS()),
         'browser' => array_rand(\RequestStats::getBrowsers()),
         'responseCode' => '200',
@@ -171,7 +173,7 @@ $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
 });
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\CustomerActions::class, function (Faker\Generator $faker) {
+$factory->define(App\CustomerAction::class, function (Faker\Generator $faker) {
     static $customer, $database, $table;
 
     $types = [ 'edit' , 'update' ,'delete' ];
