@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{ config('app.locale') }}">
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <title>Grayscale - Start Bootstrap Theme</title>
+        <title> {{ __('core.index_title') }} </title>
 
         <!-- Theme CSS -->
         <link href="../css/index.css" rel="stylesheet">
@@ -29,11 +25,8 @@
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        Menu <i class="fa fa-bars"></i>
+                        {{ __('core.menu') }} <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">
-                        <i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap
-                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,20 +38,20 @@
                         </li>
                         <li>
                             @if (Auth::guest())
-                                <a href="{{ url('/login') }}">Login</a>
+                                <a href="{{ url('/login') }}">{{ __('core.login') }}</a>
                             @else
-                                <a href="{{ url('/user') }}">Dashboard</a>
+                                <a href="{{ url('/user') }}">{{ __('core.dashboard') }}</a>
                             @endif
 
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">About</a>
+                            <a class="page-scroll" href="#about">{{ __('core.about') }}</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#download">Download</a>
+                            <a class="page-scroll" href="#download">{{ __('core.download') }}</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#contact">Contact</a>
+                            <a class="page-scroll" href="#contact">{{ __('core.contact') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -73,9 +66,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Grayscale</h1>
-                            <p class="intro-text">A free, responsive, one page Bootstrap theme.
-                                <br>Created by Start Bootstrap.</p>
+                            <h1 class="brand-heading">{{ __('core.index_intro') }}</h1>
+                            <p class="intro-text">{{ __('core.index_intro_text_1') }}
+                                <br>{{ __('core.index_intro_text_2') }}</p>
                             <a href="#about" class="btn btn-circle page-scroll">
                                 <i class="fa fa-angle-double-down animated"></i>
                             </a>
@@ -89,10 +82,10 @@
         <section id="about" class="container content-section text-center">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>About Grayscale</h2>
-                    <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                    <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                    <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                    <h2>{{ __('core.index_about_section') }}</h2>
+                    <p>{{ __('core.index_about_section_text_1') }}</p>
+                    <p>{{ __('core.index_about_section_text_2') }}</p>
+                    <p>{{ __('core.index_about_section_text_3') }}</p>
                 </div>
             </div>
         </section>
@@ -102,9 +95,9 @@
             <div class="download-section">
                 <div class="container">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <h2>Download Grayscale</h2>
-                        <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                        <h2>{{ __('core.index_download_section') }}</h2>
+                        <p>{{ __('core.index_download_section_text_1') }}</p>
+                        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">{{ __('core.index_download_section_button') }}</a>
                     </div>
                 </div>
             </div>
@@ -114,19 +107,19 @@
         <section id="contact" class="container content-section text-center">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Contact Start Bootstrap</h2>
-                    <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                    <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                    <h2>{{ __('core.index_contact_section') }}</h2>
+                    <p>{{ __('core.index_contact_section_text_1') }}</p>
+                    <p><a href="mailto:{{ __('core.index_contact_section_en_email') }}">{{ __('core.index_contact_section_en_email') }}</a>
                     </p>
                     <ul class="list-inline banner-social-buttons">
                         <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">{{ __('core.twitter') }}</span></a>
                         </li>
                         <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">{{ __('core.github') }}</span></a>
                         </li>
                         <li>
-                            <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                            <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">{{ __('core.google_plus') }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -139,7 +132,7 @@
         <!-- Footer -->
         <footer>
             <div class="container text-center">
-                <p>Copyright &copy; Your Website 2016</p>
+                <p>{{ __('core.copyright') }} &copy; {{ __('core.site_name') }} {{ date('Y') }}</p>
             </div>
         </footer>
 
@@ -147,9 +140,7 @@
 
         <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0CpSyVky-fEtz85LuuvovGMHqKtn5nKE&sensor=false"></script>
-
         <script src="/js/index.js"></script>
 
     </body>
-
 </html>
