@@ -182,6 +182,7 @@ return [
         App\Providers\CPUStatsServiceProvider::class,
         App\Providers\CustomerActionsServiceProvider::class,
         App\Providers\RequestStatsServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
     ],
 
     /*
@@ -232,10 +233,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
         'CPUStats' => App\Helpers\CPUStats\Facade::class,
-        'CustomerActions' => App\Helpers\CustomerActions\CustomerActionsFacade::class,
-        'RequestStats' => App\Helpers\RequestStats\RequestStatsFacade::class,
+        'CustomerActions' => App\Helpers\CustomerActions\Facade::class,
+        'RequestStats' => App\Helpers\RequestStats\Facade::class,
     ],
 
 ];
