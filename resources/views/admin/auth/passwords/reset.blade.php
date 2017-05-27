@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
-@section('content')
+@section('body-class', 'hold-transition login-page')
+
+@section('body-content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -14,7 +16,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('Auth:PasswordResetFormByTokenHZ') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

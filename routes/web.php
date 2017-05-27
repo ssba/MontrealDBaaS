@@ -25,21 +25,13 @@ Route::group(['as' => 'Auth:'], function () {
 
     Route::get('/logout', ['as' => 'Logout', 'uses' => 'Auth\LoginController@logout']);
 
-    Route::get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']); // TODO
-    Route::post('register', 'Auth\RegisterController@register'); // TODO
+    Route::get('register', ['as' => 'Registration', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+    Route::post('register', 'Auth\RegisterController@register');
 
-
-    /*
-     *
-
-
-        // Password Reset Routes...
-        $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-        $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-        $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-        $this->post('password/reset', 'Auth\ResetPasswordController@reset');
-     *
-     * */
+    Route::get('password/reset',['as' => 'PasswordReset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/reset',['as' => 'PasswordResetAction', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}',['as' => 'PasswordResetFormByToken', 'uses' => 'Auth\ResetPasswordController@showResetForm'] );
+    Route::post('password/email',['as' => 'PasswordResetFormByTokenHZ', 'uses' => 'Auth\ResetPasswordController@reset'] );
 
 });
 
@@ -48,9 +40,6 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
     Route::group(['as' => 'Main:'], function () {
 
         Route::get('/user/{userGUID}', ['as' => 'GetUserPage', 'uses' => 'UserController@home'])
-            ->where('userGUID', GUID_REGEXP_PATTERN);
-
-        Route::get('/user/{userGUID}/stats', ['as' => 'GetUserStatPage', 'uses' => 'UserController@stats'])
             ->where('userGUID', GUID_REGEXP_PATTERN);
 
         Route::get('/user/{userGUID}/settings', ['as' => 'GetUserSettings', 'uses' => 'UserController@settings'])
@@ -116,7 +105,7 @@ Route::group(['middleware' => 'auth:web_admins,web'], function () {
 
     });
 
-    Route::group(['as' => 'CacheEnvironment'], function () {
+    Route::group(['as' => 'QEnvironment'], function () {
 
         Route::get('/user/{userGUID}/databases/{dbGUID}/cache', ['as' => 'CacheEnvironment', 'uses' => 'CacheEnvironment@getDBSettings'])
             ->where('userGUID', GUID_REGEXP_PATTERN)

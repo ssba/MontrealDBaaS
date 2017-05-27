@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\CustomResetPasswordNotification as ResetPasswordNotification;
 
 class Customer extends Authenticatable
 {
@@ -59,6 +60,17 @@ class Customer extends Authenticatable
         'password' => 'required|string',
         'gender' => 'required|string|min:1|max:1|in:m,f',
     ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 
     /**
      * Get the links of the Admins

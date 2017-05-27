@@ -1,5 +1,5 @@
 <template>
-
+    <!-- TODO Translation -->
     <section class="content-header">
         <h1>
             <slot></slot>

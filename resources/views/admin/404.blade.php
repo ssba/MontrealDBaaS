@@ -5,7 +5,7 @@
 @section('content-header')
     <content-header :breadcrumbs="false" >
 
-        404 Error Page
+        {{ __('core.panel.tpl.404.title') }}
 
     </content-header>
 @endsection
@@ -16,12 +16,9 @@
             <h2 class="headline text-yellow"> 404</h2>
 
             <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+                <h3><i class="fa fa-warning text-yellow"></i>{{ __('core.panel.tpl.404.msg') }}</h3>
 
-                <p>
-                    We could not find the page you were looking for.
-                    Meanwhile, you may <a href="/">return to dashboard</a> or try using the search form.
-                </p>
+                <p>{!! __('core.panel.tpl.404.msg_html') !!}</p>
 
                 <form class="search-form">
                     <div class="input-group">

@@ -58,7 +58,7 @@ class DataBaseController extends Controller
             'DBCharsets' => $this->charsets
         ]);
 
-        return view('admin.db.all', ['data' => $data, 'title' => __('admin.getAllDBs_title') ]);
+        return view('admin.db.all', ['data' => $data, 'title' => __('core.panel.tpl.databases.title') ]);
     }
 
     public function create(string $userGUID, Request $request)
@@ -93,13 +93,11 @@ class DataBaseController extends Controller
                 "editDB" => route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
                 "deleteDB" => route('DataBase:DeleteDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
                 "DBtables" => route('DataBaseTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
-                "cacheSettings" => route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID])
             ],
             'translates' => [
-                "getAllDBs_delete_db" => __('admin.getAllDBs_delete_db'),
-                "getAllDBs_edit_db" => __('admin.getAllDBs_edit_db'),
-                "getAllDBs_tables_of_db" => __('admin.getAllDBs_tables_of_db'),
-                "getAllDBs_edit_cache_of_db" => __('admin.getAllDBs_edit_cache_of_db')
+                "getAllDBs_delete_db" => __('core.delete'),
+                "getAllDBs_edit_db" => __('core.edit'),
+                "getAllDBs_tables_of_db" => __('core.panel.tpl.tables.title')
             ]
         ];
     }

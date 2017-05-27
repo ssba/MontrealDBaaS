@@ -6,8 +6,8 @@
 @section('content-header')
     <content-header :breadcrumbs="false">
 
-        DataBases
-        <small>Main list</small>
+        {{ __('core.panel.tpl.databases.title') }}
+        <small></small>
 
     </content-header>
 @endsection
@@ -27,17 +27,17 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">10 per page</h3>
+                        <h3 class="box-title">{{ __('core.panel.tpl.databases.main_list') }}</h3>
                     </div>
                     <div class="box-body">
                         <table id="DataBaseAllLists" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Charset</th>
-                                <th>Collation</th>
-                                <th>Options</th>
-                                <th>Actions</th>
+                                <th>{{ __('core.panel.tpl.databases.name') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.charset') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.collation') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.options') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,18 +51,17 @@
                                         <a class='ctrlPanel' title="{{ __('admin.getAllDBs_delete_db') }}" id="deleteDB" href="#" data-toggle="modal" data-target="#confirm-delete" data-href=" {{ route('DataBase:DeleteDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-trash'></i></a>
                                         <a class='ctrlPanel' title="{{ __('admin.getAllDBs_edit_db') }}" id="editDB" href=" {{ route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-pencil-square'></i></a>
                                         <a class='ctrlPanel' title="{{ __('admin.getAllDBs_tables_of_db') }}" id="gotoTbl" href=" {{ route('DataBaseTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-table'></i></a>
-                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_edit_cache_of_db') }}" id="DBcache" href=" {{ route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-archive'></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Charset</th>
-                                <th>Collation</th>
-                                <th>Options</th>
-                                <th>Actions</th>
+                                <th>{{ __('core.panel.tpl.databases.name') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.charset') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.collation') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.options') }}</th>
+                                <th>{{ __('core.panel.tpl.databases.actions') }}</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -72,7 +71,7 @@
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="box" id="create.database">
                     <div class="box-header">
-                        <h3 class="box-title">Create new DataBase</h3>
+                        <h3 class="box-title">{{ __('core.panel.tpl.databases.create_title') }}</h3>
                     </div>
                     <div class="box-body">
                         <create-db-form uri="{{  route('DataBase:CreateDatabase', ['userGUID' => Auth::user()->id]) }}" method="post"></create-db-form>
@@ -89,18 +88,18 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ __('core.panel.tpl.databases.delete_modal.title') }}</h4>
                 </div>
 
                 <div class="modal-body">
-                    <p>You are about to delete one track, this procedure is irreversible.</p>
-                    <p>Do you want to proceed?</p>
+                    <p>{{ __('core.panel.tpl.databases.delete_modal.msg') }}</p>
+                    <p>{{ __('core.panel.tpl.databases.delete_modal.question') }}</p>
                     <p class="debug-url"></p>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger btn-ok">Delete</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('core.cancel') }}</button>
+                    <a class="btn btn-danger btn-ok">{{ __('core.delete') }}</a>
                 </div>
             </div>
         </div>

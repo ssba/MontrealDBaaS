@@ -58,6 +58,7 @@ class TablesTable extends Migration
             ]);
             $table->boolean('ai');
             $table->text('comments');
+            $table->integer('cache')->nullable();
             $table->foreign('database')->references('id')->on('databases')->onDelete('cascade');
 
         });

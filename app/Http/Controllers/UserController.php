@@ -41,6 +41,7 @@ class UserController extends Controller
         $MonthlyVisitors = RequestStatsHelper::getMonthlyVisitors($affectedID);
         $osChartData = RequestStatsHelper::getOSStats($affectedID, 7);
         JavaScript::put([
+            'MonthlyVisitorsTitle' => __('core.panel.tpl.home.monthly_attendance_report_bage'),
             'MonthlyVisitors_Days' => array_get($MonthlyVisitors, 'day', []),
             'MonthlyVisitors_Count' => array_get($MonthlyVisitors, 'count', []),
             'OsChartData_Colors' => array_get($osChartData, 'color', []),
@@ -49,7 +50,7 @@ class UserController extends Controller
             'Visitors_GEO' => RequestStatsHelper::getVisitorsGeolotaion($affectedID, 7, true)
         ]);
 
-        return view('admin.user.home', ['data' => $data, 'title' => __('admin.admin_home') ]);
+        return view('admin.user.home', ['data' => $data]);
     }
 
     /**

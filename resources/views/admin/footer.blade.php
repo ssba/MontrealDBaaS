@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        DBaaS Application based on <a href="https://github.com/almasaeed2010/AdminLTE">AdminLTE</a> and <a
-                href="https://github.com/BlackrockDigital/startbootstrap">GRAYSCALE</a> templates
+        {!! __('core.panel.tpl_copyrigth', [ "adminlte_link" => '<a href="https://github.com/almasaeed2010/AdminLTE">AdminLTE</a>',
+                                             "grayscale_link" => '<a href="https://github.com/BlackrockDigital/startbootstrap">GRAYSCALE</a>']) !!}
+
     </div>
-    <strong>Copyright &copy; {{ date("Y") }} <a href="#">ssba.work/dbaas</a>.</strong> All rights reserved by
-    MIT License.
+    <p>{{ __('core.copyright') }} &copy; {{ __('core.site_name') }} {{ date('Y') }}. {{ __('core.all_rights_reserved') }}</p>
 </footer>

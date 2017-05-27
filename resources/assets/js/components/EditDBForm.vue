@@ -1,5 +1,5 @@
 <template>
-    <!-- the submit event will no longer reload the page -->
+    <!-- TODO Translation -->
     <form class="form-horizontal" id="createDB_Form" v-bind:action="uri" v-bind:method="method" @submit.prevent="EditDBonSubmit_Event"  >
         <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label" >Name</label>

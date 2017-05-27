@@ -25,9 +25,6 @@
     <section class="content">
         <div class="col-xs-6 col-xs-offset-3">
             <div class="box" id="create.database">
-                <div class="box-header">
-                    <h3 class="box-title">Create new DataBase</h3>
-                </div>
                 <div class="box-body">
                     <edit-db-form
                             uri="{{  route('DataBase:ManageDataBaseAction', ['userGUID' => Auth::user()->id, 'dbGUID' => $database->id]) }}"

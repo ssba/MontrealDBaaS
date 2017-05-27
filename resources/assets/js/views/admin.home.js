@@ -13,7 +13,7 @@ $(function () {
             labels: window.MonthlyVisitors_Days,
             datasets: [
                 {
-                    label: "Digital Goods",
+                    label: window.MonthlyVisitorsTitle,
                     data: window.MonthlyVisitors_Count,
                     fill: true,
                     borderColor: "rgba(60,141,188,1)",
