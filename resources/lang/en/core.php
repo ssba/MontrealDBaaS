@@ -104,6 +104,13 @@ return [
                     'terms' => 'I agree to the <a href="#">terms</a>',
 
                 ],
+
+                'reset' => [
+
+                    'msg' => 'Reset Password',
+                    'button' => 'Send Password Reset Link',
+
+                ],
             ],
 
             /*user.home*/

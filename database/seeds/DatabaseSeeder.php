@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'gilberto95@example.net'
         ]);
 
+        factory(App\CustomerSetting::class)->create([
+            'customer' => $customer->id,
+        ]);
+
         $database = factory(App\Database::class)->create([
             'customer' => $customer->id,
         ]);

@@ -191,3 +191,27 @@ $factory->define(App\CustomerAction::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\CustomerSetting::class, function (Faker\Generator $faker) {
+    static $customer;
+
+    return [
+        'customer' => $customer ?: $customer = function () {
+            return factory(App\Customer::class)->create()->id;
+        },
+        'tpl_skin' => 'skin-blue',
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\AdminSetting::class, function (Faker\Generator $faker) {
+    static $admin;
+
+    return [
+        'admin' => $admin ?: $admin = function () {
+            return factory(App\Admin::class)->create()->id;
+        },
+        'tpl_skin' => 'skin-blue',
+    ];
+});

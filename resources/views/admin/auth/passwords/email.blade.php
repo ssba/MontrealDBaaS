@@ -7,7 +7,7 @@
         <div class="login-logo">
             <a href="{{ route('IndexPage') }}">{!! __('core.panel.tpl.main.site_name_html')  !!}</a>
         </div>
-        <div class="login-box-body"><p class="login-box-msg">Reset Password</p>
+        <div class="login-box-body"><p class="login-box-msg">{{ __('core.panel.tpl.auth.reset.msg')  }} </p>
 
             @if (session('status'))
                 <div class="alert alert-success">
@@ -19,7 +19,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" class="form-control" required>
+                    <input type="email" placeholder="{{ __('core.email')  }}" name="email" value="{{ old('email') }}" class="form-control" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                     @if ($errors->has('email'))
@@ -32,14 +32,14 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
                         <button type="submit" class="btn btn-primary">
-                            Send Password Reset Link
+                            {{ __('core.panel.tpl.auth.reset.button')  }}
                         </button>
                     </div>
                 </div>
 
             </form>
-            <a href="https://demo.adminlte.acacha.org/login">Log in</a><br>
-            <a href="https://demo.adminlte.acacha.org/register" class="text-center">Register a new membership</a>
+            <a href="https://demo.adminlte.acacha.org/login">{{ __('core.sign_in')  }}</a><br>
+            <a href="https://demo.adminlte.acacha.org/register" class="text-center">{{ __('core.panel.tpl.auth.registration.msg')  }}</a>
         </div>
     </div>
 @endsection
