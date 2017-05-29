@@ -1,5 +1,10 @@
 
 window._ = require('lodash');
+window.paceOptions = {
+    ajax: {
+        trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE']
+    }
+};
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

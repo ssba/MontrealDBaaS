@@ -19,8 +19,8 @@ class DatabasesTable extends Migration
             $table->uuid('id')->unique();
             $table->uuid('customer');
             $table->string('name');
-            $table->enum('charset', ['utf8']);
-            $table->string('collation')->nullable()->default(NULL);
+            $table->enum('charset', ['utf8'])->default('utf8');
+            $table->string('collation')->nullable()->default('utf8_general_ci');
             $table->text('options')->nullable()->default(NULL)->comment('Only CSV with ; separator');
             $table->timestamps();
             $table->foreign('customer')->references('id')->on('customers')->onDelete('cascade');

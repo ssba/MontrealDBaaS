@@ -6,7 +6,7 @@
 @section('content-header')
     <content-header :breadcrumbs="false">
 
-        {{ __('core.panel.tpl.databases.title') }}
+        {{ $title }}
         <small></small>
 
     </content-header>
@@ -50,7 +50,7 @@
                                     <td>
                                         <a class='ctrlPanel' title="{{ __('admin.getAllDBs_delete_db') }}" id="deleteDB" href="#" data-toggle="modal" data-target="#confirm-delete" data-href=" {{ route('DataBase:DeleteDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-trash'></i></a>
                                         <a class='ctrlPanel' title="{{ __('admin.getAllDBs_edit_db') }}" id="editDB" href=" {{ route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-pencil-square'></i></a>
-                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_tables_of_db') }}" id="gotoTbl" href=" {{ route('DataBaseTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-table'></i></a>
+                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_tables_of_db') }}" id="gotoTbl" href=" {{ route('DataTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-table'></i></a>
                                     </td>
                                 </tr>
                             @endforeach

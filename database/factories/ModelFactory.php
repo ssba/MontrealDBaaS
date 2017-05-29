@@ -66,38 +66,25 @@ $factory->define(App\Database::class, function (Faker\Generator $faker) {
         },
         'name' => $faker->word,
         'charset' => 'utf8',
-        'collation' => NULL,
+        'collation' => 'utf8_general_ci',
         'options' => NULL,
     ];
 });
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Table::class, function (Faker\Generator $faker) {
-
-    $types = [
-        'INT',
-        'VARCHAR',
-        'TEXT',
-        'DATE',
-        'REAL',
-        'BOOLEAN'
-    ];
+    static $database;
 
     return [
         'id' => $faker->uuid,
-        'database' => function () {
+        'database' => $database ?: $database = function () {
             return factory(App\Database::class)->create()->id;
         },
         'name' => $faker->word,
-        'type' => $types[array_rand($types)],
-        'values' => '',
-        'default' => '',
-        'collation' => '',
-        'attributes' => '',
-        'NULL' => false,
-        'index' => NULL,
-        'ai' => NULL,
-        'comments' => ''
+        'charset' => 'utf8',
+        'collation' => 'utf8_general_ci',
+        'comment' => '',
+        'cache' => NULL
     ];
 });
 
@@ -134,7 +121,7 @@ $factory->define(App\CPUStat::class, function (Faker\Generator $faker) {
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\RequestStats::class, function (Faker\Generator $faker) {
-    static $database, $real;
+    static $database;
 
     $methods = [
         'get',

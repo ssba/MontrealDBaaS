@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use JavaScript;
+use Auth;
+use DB;
 use App\Database;
 use App\RequestStats;
+use App\Customer;
 use CPUStats as CPUStatsHelper;
 use CustomerActions as CustomerActionsHelper;
 use RequestStats as RequestStatsHelper;
@@ -71,6 +74,34 @@ class UserController extends Controller
      *
      */
     public function saveSettings (string $userGUID, Request $request){
+
+        $settings = Customer::where('id',$userGUID)->firstOrFail()->settings ;
+
+        DB::transaction(function () use ($settings, $request) {
+
+            $settingsRequest = $request->only( 'tpl_skin');
+            if (!empty( array_filter($settingsRequest) )) {
+
+                $settings_update = $settings->update( $settingsRequest );
+                if(!$settings_update)
+                    throw new ValidationException($settings_update->errors());
+
+            }
+
+        });
+
+        return 1;
+    }
+
+    /**
+     *
+     */
+    public function saveCurrentSettings (Request $request){
+
+        return $this->saveSettings(Auth::user()->id, $request);
+
+
+
 
     }
 }

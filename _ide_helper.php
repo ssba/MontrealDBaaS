@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.23 on 2017-05-25.
+ * Generated for Laravel 5.4.23 on 2017-05-28.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12024,6 +12024,84 @@ namespace Barryvdh\Debugbar {
     }         
 }
     
+namespace Torann\GeoIP\Facades {
+
+    class GeoIP {
+        
+        /**
+         * Get the location from the provided IP.
+         *
+         * @param string $ip
+         * @return \Torann\GeoIP\Location 
+         * @static 
+         */
+        public static function getLocation($ip = null)
+        {
+            return \Torann\GeoIP\GeoIP::getLocation($ip);
+        }
+        
+        /**
+         * Get the currency code from ISO.
+         *
+         * @param string $iso
+         * @return string 
+         * @static 
+         */
+        public static function getCurrency($iso)
+        {
+            return \Torann\GeoIP\GeoIP::getCurrency($iso);
+        }
+        
+        /**
+         * Get service instance.
+         *
+         * @return \Torann\GeoIP\Contracts\ServiceInterface 
+         * @throws Exception
+         * @static 
+         */
+        public static function getService()
+        {
+            return \Torann\GeoIP\GeoIP::getService();
+        }
+        
+        /**
+         * Get cache instance.
+         *
+         * @return \Torann\GeoIP\Cache 
+         * @static 
+         */
+        public static function getCache()
+        {
+            return \Torann\GeoIP\GeoIP::getCache();
+        }
+        
+        /**
+         * Get the client IP address.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getClientIP()
+        {
+            return \Torann\GeoIP\GeoIP::getClientIP();
+        }
+        
+        /**
+         * Get configuration value.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed 
+         * @static 
+         */
+        public static function config($key, $default = null)
+        {
+            return \Torann\GeoIP\GeoIP::config($key, $default);
+        }
+        
+    }         
+}
+    
 namespace App\Helpers\CPUStats {
 
     class Facade {
@@ -14250,6 +14328,8 @@ namespace {
     class Uuid extends \Webpatser\Uuid\Uuid {}
     
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
+    
+    class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
     
     class CPUStats extends \App\Helpers\CPUStats\Facade {}
     

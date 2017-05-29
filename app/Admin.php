@@ -71,4 +71,12 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\CustomerToAdmin','admin','id');
     }
+
+    /**
+     * Get the links of the Users
+     */
+    public function settings()
+    {
+        return $this->hasOne('App\AdminSetting','admin','id');
+    }
 }

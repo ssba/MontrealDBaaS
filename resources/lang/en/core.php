@@ -163,6 +163,20 @@ return [
             /*??*/
             'tables' => [
                 'title' => 'Table',
+                'name' => 'Name',
+                'type' => 'Type',
+                'values' => 'Values',
+                'default' => 'Default',
+                'collation' => 'Collation',
+                'is_null' => 'NULL',
+                'index' => 'Index',
+                'auto_increment' => 'AI',
+                'cache' => 'Cache',
+                'charset' => 'Charset',
+                'updated_at' => 'Updated At',
+                'created_at' => 'Created At',
+                'comments' => 'Comments',
+                'actions' => 'Actions'
             ],
 
         ]

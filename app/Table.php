@@ -26,7 +26,7 @@ class Table extends Ardent
      * @var array
      */
     protected $fillable = [
-        'id', 'database', 'name', 'type', 'values', 'default', 'collation', 'attributes', 'NULL', 'index', 'ai', 'comments'
+        'id', 'database', 'name', 'collation', 'charset', 'comment', 'cache'
     ];
 
     /**
@@ -44,16 +44,11 @@ class Table extends Ardent
     public static $rules = [
         'id' => 'required|string|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
         'database' => 'required|string|exists:databases,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
-        'name' => 'required|string',
-        'type' => 'required|string|in:INT,VARCHAR,TEXT,DATE,TINYINT,SMALLINT,MEDIUMINT,FLOAT,DOUBLE,REAL,BOOLEAN,DATETIME,TIMESTAMP,TIME,YEAR,CHAR,TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT,BINARY,VARBINARY,BLOB,ENUM',
-        'values' => 'required|string',
-        'default' => 'string',
-        'collation' => 'string',
-        'attributes' => 'string',
-        'NULL' => 'boolean',
-        'index' => 'in:PRIMARY,UNIQUE,INDEX,FULLTEXT,SPATIAL',
-        'ai' => 'boolean',
-        'comments' => 'string'
+        'name' => 'required|string|not_in:id',
+        'collation' => 'string|nullable',
+        'charset' => 'string',
+        'comment' => 'string|nullable',
+        'cache' => 'int|nullable'
     ];
 
     /**

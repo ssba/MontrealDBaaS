@@ -19,49 +19,15 @@ class TablesTable extends Migration
             $table->uuid('id')->unique();
             $table->uuid('database');
             $table->string('name');
-            $table->enum('type', [
-                'INT',
-                'VARCHAR',
-                'TEXT',
-                'DATE',
-                'TINYINT',
-                'SMALLINT',
-                'MEDIUMINT',
-                'FLOAT',
-                'DOUBLE',
-                'REAL',
-                'BOOLEAN',
-                'DATETIME',
-                'TIMESTAMP',
-                'TIME',
-                'YEAR',
-                'CHAR',
-                'TINYTEXT',
-                'MEDIUMTEXT',
-                'LONGTEXT',
-                'BINARY',
-                'VARBINARY',
-                'BLOB',
-                'ENUM'
-            ]);
-            $table->string('values');
-            $table->string('default');
-            $table->string('collation');
-            $table->string('attributes');
-            $table->boolean('NULL');
-            $table->enum('index', [
-                'PRIMARY',
-                'UNIQUE',
-                'INDEX',
-                'FULLTEXT',
-                'SPATIAL'
-            ]);
-            $table->boolean('ai');
-            $table->text('comments');
+            $table->enum('charset', ['utf8'])->default('utf8');
+            $table->string('collation')->nullable()->default('utf8_general_ci');
+            $table->text('comment')->nullable();
             $table->integer('cache')->nullable();
+            $table->timestamps();
             $table->foreign('database')->references('id')->on('databases')->onDelete('cascade');
 
         });
+
     }
 
     /**

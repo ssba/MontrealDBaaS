@@ -376,4 +376,157 @@ Recently Added Products - история по созданию , удалени�
 
 
 
+```
+<?php
 
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class TablesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tables', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+            $table->uuid('id')->unique();
+            $table->uuid('database');
+            $table->string('name');
+            $table->enum('type', [
+                'INT',
+                'VARCHAR',
+                'TEXT',
+                'DATE',
+                'TINYINT',
+                'SMALLINT',
+                'MEDIUMINT',
+                'FLOAT',
+                'DOUBLE',
+                'REAL',
+                'BOOLEAN',
+                'DATETIME',
+                'TIMESTAMP',
+                'TIME',
+                'YEAR',
+                'CHAR',
+                'TINYTEXT',
+                'MEDIUMTEXT',
+                'LONGTEXT',
+                'BINARY',
+                'VARBINARY',
+                'BLOB',
+                'ENUM'
+            ]);
+            $table->string('values')->nullable();;
+            $table->string('default')->nullable();;
+            $table->string('collation')->nullable();;
+            $table->string('attributes')->nullable();;
+            $table->boolean('NULL');
+            $table->enum('index', [
+                'PRIMARY',
+                'UNIQUE',
+                'INDEX',
+                'FULLTEXT',
+                'SPATIAL'
+            ])->nullable();
+            $table->boolean('ai');
+            $table->text('comments');
+            $table->integer('cache')->nullable();
+            $table->timestamps();
+            $table->foreign('database')->references('id')->on('databases')->onDelete('cascade');
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tables');
+    }
+}
+```
+```<?php
+   
+   namespace App;
+   
+   use LaravelArdent\Ardent\Ardent;
+   
+   class Table extends Ardent
+   {
+       /**
+        * Set not incremeniting ID.
+        *
+        * @var boolean
+        */
+       public $incrementing = false;
+   
+       /**
+        * The table associated with the model.
+        *
+        * @var string
+        */
+       protected $table = 'tables';
+   
+       /**
+        * The attributes that are mass assignable.
+        *
+        * @var array
+        */
+       protected $fillable = [
+           'id', 'database', 'name', 'type', 'values', 'default', 'collation', 'attributes', 'NULL', 'index', 'ai', 'comments'
+       ];
+   
+       /**
+        * The attributes that should be hidden for arrays.
+        *
+        * @var array
+        */
+       protected $hidden = [];
+   
+       /**
+        * Validators rules for Ardent validator
+        *
+        * @var array
+        */
+       public static $rules = [
+           'id' => 'required|string|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
+           'database' => 'required|string|exists:databases,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
+           'name' => 'required|string',
+           'type' => 'required|string|in:INT,VARCHAR,TEXT,DATE,TINYINT,SMALLINT,MEDIUMINT,FLOAT,DOUBLE,REAL,BOOLEAN,DATETIME,TIMESTAMP,TIME,YEAR,CHAR,TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT,BINARY,VARBINARY,BLOB,ENUM',
+           'values' => 'string',
+           'default' => 'string',
+           'collation' => 'string',
+           'attributes' => 'string',
+           'NULL' => 'boolean',
+           'index' => 'in:PRIMARY,UNIQUE,INDEX,FULLTEXT,SPATIAL|nullable',
+           'ai' => 'boolean',
+           'comments' => 'string',
+           'cache' => 'int|nullable'
+       ];
+   
+       /**
+        * Get the customer of this database
+        */
+       public function relatedDataBase()
+       {
+           return $this->belongsTo('App\Database','id','database');
+       }
+   
+       /**
+        * Get the customer actions of this database
+        */
+       public function actions()
+       {
+           return $this->hasMany('App\CustomerAction','table');
+       }
+   }```

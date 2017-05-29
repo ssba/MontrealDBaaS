@@ -71,8 +71,8 @@ class DataBaseController extends Controller
 
         DB::transaction(function () use ($userGUID, $request, $newDBID) {
 
-            $name = md5($request->name . $userGUID);
-            $query = "CREATE DATABASE IF NOT EXISTS " . $name . " DEFAULT CHARACTER SET " . $request->charset . " COLLATE " . $request->collation;
+            $name = "A".md5($request->name . $userGUID);
+            $query = "CREATE DATABASE " . $name . " DEFAULT CHARACTER SET " . $request->charset . " COLLATE " . $request->collation;
             DB::connection('mysql')->unprepared($query);
 
             $newDatabase = new Database([
@@ -92,7 +92,7 @@ class DataBaseController extends Controller
             'urls' => [
                 "editDB" => route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
                 "deleteDB" => route('DataBase:DeleteDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
-                "DBtables" => route('DataBaseTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
+                "DBtables" => route('DataTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $newDBID]),
             ],
             'translates' => [
                 "getAllDBs_delete_db" => __('core.delete'),
@@ -141,7 +141,7 @@ class DataBaseController extends Controller
                 if(!$database_update)
                     throw new ValidationException($database_update->errors());
 
-                $database_name = md5($request->name . $userGUID);
+                $database_name = "A".md5($request->name . $userGUID);
                 $query = "ALTER DATABASE " . $database_name . " CHARACTER SET " . $request->charset . " COLLATE " . $request->collation;
                 DB::connection('mysql')->unprepared($query);
             }
@@ -161,7 +161,7 @@ class DataBaseController extends Controller
 
         DB::transaction(function () use ($database, $userGUID) {
 
-            $name = md5($database->name . $userGUID);
+            $name = "A".md5($database->name . $userGUID);
             $query = "DROP DATABASE IF EXISTS " . $name;
 
             DB::connection('mysql')->unprepared($query);

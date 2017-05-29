@@ -4,6 +4,8 @@
   "/css/admin.css": "/css/admin.css",
   "/css/index.css": "/css/index.css",
   "/css/alldbs.css": "/css/alldbs.css",
+  "/css/alltables.css": "/css/alltables.css",
   "/js/index.js": "/js/index.js",
+  "/js/alltables.js": "/js/alltables.js",
   "/js/alldbs.js": "/js/alldbs.js"
 }

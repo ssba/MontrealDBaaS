@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-05-25.
+    * Generated on 2017-05-28.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -45,6 +45,7 @@ namespace PHPSTORM_META {
             'CPUStats' instanceof \App\Helpers\CPUStats\CPUStats,
             'CustomerActions' instanceof \App\Helpers\CustomerActions\CustomerActions,
             'RequestStats' instanceof \App\Helpers\RequestStats\RequestStats,
+            'geoip' instanceof \Torann\GeoIP\GeoIP,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -127,6 +128,7 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBrokerManager,
+            'auth.password.broker' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -171,6 +173,7 @@ namespace PHPSTORM_META {
             'CPUStats' instanceof \App\Helpers\CPUStats\CPUStats,
             'CustomerActions' instanceof \App\Helpers\CustomerActions\CustomerActions,
             'RequestStats' instanceof \App\Helpers\RequestStats\RequestStats,
+            'geoip' instanceof \Torann\GeoIP\GeoIP,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -253,6 +256,7 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBrokerManager,
+            'auth.password.broker' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -297,6 +301,7 @@ namespace PHPSTORM_META {
             'CPUStats' instanceof \App\Helpers\CPUStats\CPUStats,
             'CustomerActions' instanceof \App\Helpers\CustomerActions\CustomerActions,
             'RequestStats' instanceof \App\Helpers\RequestStats\RequestStats,
+            'geoip' instanceof \Torann\GeoIP\GeoIP,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -379,6 +384,7 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBrokerManager,
+            'auth.password.broker' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
@@ -423,6 +429,7 @@ namespace PHPSTORM_META {
             'CPUStats' instanceof \App\Helpers\CPUStats\CPUStats,
             'CustomerActions' instanceof \App\Helpers\CustomerActions\CustomerActions,
             'RequestStats' instanceof \App\Helpers\RequestStats\RequestStats,
+            'geoip' instanceof \Torann\GeoIP\GeoIP,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'cache' instanceof \Illuminate\Cache\CacheManager,
             'cache.store' instanceof \Illuminate\Cache\Repository,
@@ -505,6 +512,7 @@ namespace PHPSTORM_META {
             'redis' instanceof \Illuminate\Redis\RedisManager,
             'redis.connection' instanceof \Illuminate\Redis\Connections\PredisConnection,
             'auth.password' instanceof \Illuminate\Auth\Passwords\PasswordBrokerManager,
+            'auth.password.broker' instanceof \Illuminate\Auth\Passwords\PasswordBroker,
             'translation.loader' instanceof \Illuminate\Translation\FileLoader,
             'translator' instanceof \Illuminate\Translation\Translator,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,

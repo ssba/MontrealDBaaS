@@ -3,7 +3,7 @@
 @import "~datatables.net-bs/css/dataTables.bootstrap.css";
 
 
-a.ctrlPanel#deleteDB  {
+a.ctrlPanel#deleteTable  {
   color: #d9534f;
 
   &:hover {
@@ -11,7 +11,7 @@ a.ctrlPanel#deleteDB  {
   }
 }
 
-a.ctrlPanel#editDB  {
+a.ctrlPanel#editTable  {
   color: #f0ad4e;
 
   &:hover {
@@ -19,11 +19,19 @@ a.ctrlPanel#editDB  {
   }
 }
 
-a.ctrlPanel#gotoTbl  {
+a.ctrlPanel#gotoRows  {
   color: #5cb85c;
 
   &:hover {
     color: #519e51;
+  }
+}
+
+a.ctrlPanel#DBcache  {
+  color: #5bc0de;
+
+  &:hover {
+    color: #5ba5c4;
   }
 }
 

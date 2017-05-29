@@ -40,7 +40,7 @@ class AdminSetting extends Model
     public static $rules = [
 
         'admin' => 'required|string|exists:admins,id|regex:/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/',
-        'tpl_skin' => 'required|string|in:skin-blue,skin-black,skin-purple,skin-yellow,skin-red,skin-green',
+        'tpl_skin' => 'required|string|in:skin-blue, skin-black, skin-red, skin-yellow, skin-purple, skin-green, skin-blue-light, skin-black-light, skin-red-light, skin-yellow-light, skin-purple-light, skin-green-light',
 
     ];
 

@@ -79,4 +79,12 @@ class Customer extends Authenticatable
     {
         return $this->hasMany('App\CustomerToAdmin','customer','id');
     }
+
+    /**
+     * Get the links of the Users
+     */
+    public function settings()
+    {
+        return $this->hasOne('App\CustomerSetting','customer','id');
+    }
 }

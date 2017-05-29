@@ -32,13 +32,16 @@ class DatabaseSeeder extends Seeder
 
         factory(App\CPUStat::class, 36)->create();
 
-        factory(App\RequestStats::class, rand(100, 110))->create([
+        factory(App\RequestStats::class, rand(10, 15))->create([
             'database' => $database->id,
         ]);
 
-        factory(App\CustomerAction::class, rand(50,110))->create([
+        factory(App\CustomerAction::class, rand(5,20))->create([
             'customer' => $customer->id,
         ]);
 
+        factory(App\Table::class)->create([
+            'database' => $database->id,
+        ]);
     }
 }
