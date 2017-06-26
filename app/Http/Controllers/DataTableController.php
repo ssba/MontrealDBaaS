@@ -66,7 +66,7 @@ class DataTableController extends Controller
 
         return [
             'urls' => [
-                "editTable" => route('DataTables:ManageDataTableAction', ['dbGUID' => $database->id, 'tGUID' => $newTableID]),
+                "editTable" => route('DataTables:ManageDataTable', ['dbGUID' => $database->id, 'tGUID' => $newTableID]),
                 "deleteTable" => route('DataTables:DeleteDataTable', ['dbGUID' => $database->id, 'tGUID' => $newTableID]),
                 "DTRows" => "Rows",
             ],
@@ -88,7 +88,10 @@ class DataTableController extends Controller
      */
     public function editSingle(string $dbGUID, string $tGUID)
     {
+        $database = Database::where('id', $dbGUID)->where('customer', Auth::user()->id)->firstOrFail();
+        $table = $database->tables()->where('id', $tGUID)->firstOrFail();
 
+        return view('admin.tables.edit', ['database' => $database, 'table' => $table, 'title' => __('admin.getAllDBs_edit_db')]);
     }
 
     /**
@@ -96,7 +99,41 @@ class DataTableController extends Controller
      */
     public function editSingleSave(string $dbGUID, string $tGUID, Request $request)
     {
+        $database = Database::where('id', $dbGUID)->where('customer', Auth::user()->id)->firstOrFail();
+        $table = $database->tables()->where('id', $tGUID)->firstOrFail();
 
+        DB::transaction(function () use ($request, $database, $table) {
+
+            $tableRequest = $request->only( 'name', 'comment');
+            if (!empty( array_filter($tableRequest) )) {
+
+
+
+                $database_name = "A".md5($database->name . Auth::user()->id);
+
+                $table->name = strtolower($table->name);
+                $request->name = strtolower($request->name);
+                $query = "ALTER TABLE `$database_name`.`$table->name` RENAME `$database_name`.`$request->name`;
+                                    ALTER TABLE `$database_name`.`$table->name` COMMENT = '$table->comment';";
+
+                DB::connection('mysql')->unprepared($query);
+
+
+                $table_update = $table->update( $tableRequest );
+
+                if(!$table_update)
+                    throw new ValidationException($table_update->errors());
+
+
+
+            }
+
+        });
+
+        return 1;
+
+        // ALTER TABLE `iplookupapi0` RENAME `iplookupapi` COMMENT = '0001';
+        //
     }
 
     /**

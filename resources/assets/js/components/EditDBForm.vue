@@ -90,6 +90,8 @@
 
             EditDBonSubmit_Event: function (event) {
 
+                Pace.restart();
+
                 $("#submitData").button('loading');
                 let formURI = event.target.action;
                 let formMethod = event.target.method;

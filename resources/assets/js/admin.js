@@ -21,6 +21,7 @@ Vue.component('content-header', require('./components/ContentHeader.vue'));
 Vue.component('create-db-form', require('./components/CreateDBForm.vue'));
 Vue.component('edit-db-form', require('./components/EditDBForm.vue'));
 Vue.component('create-table-form', require('./components/CreateTableForm.vue'));
+Vue.component('edit-table-form', require('./components/EditTableForm.vue'));
 
 
 const app = new Vue({

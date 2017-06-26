@@ -4,10 +4,17 @@
 @section('admin.user.databases.menu_activation_state', 'active' )
 
 @section('content-header')
-    <content-header :breadcrumbs="false">
+    <content-header >
 
         {{ $title }}
         <small></small>
+
+
+        <ol class="breadcrumb" slot="breadcrumbs">
+            <li><a href="{{  route('Main:GetUserPage', ['userGUID' => Auth::user()->id])  }}"><i class="fa fa-home"></i> {{ __('core.panel.tpl.home.title') }}</a></li>
+            <li><a href="{{  route('DataBase:GetAll', ['userGUID' => Auth::user()->id])  }}"><i class="fa fa-pie-chart"></i> {{ __('core.panel.tpl.databases.title') }}</a></li>
+            <li class="active"><i class="fa fa-table"></i> {{ __('core.panel.tpl.tables.title') }}</li>
+        </ol>
 
     </content-header>
 @endsection
@@ -54,9 +61,9 @@
                                     <td>{{ $item->updated_at }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_delete_db') }}" id="deleteTable" href="#" data-toggle="modal" data-target="#confirm-delete" data-href=" {{ route('DataBase:DeleteDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-trash'></i></a>
-                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_edit_db') }}" id="editTable" href=" {{ route('DataBase:ManageDataBase', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-pencil-square'></i></a>
-                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_tables_of_db') }}" id="gotoRows" href=" {{ route('DataTables:GetDataTables', ['userGUID' => Auth::user()->id, 'dbGUID' => $item->id]) }} "><i class='fa fa-empire'></i></a>
+                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_delete_db') }}" id="deleteTable" href="#" data-toggle="modal" data-target="#confirm-delete" data-href=" {{ route('DataTables:DeleteDataTable', ['dbGUID' => $db->id, 'tGUID' => $item->id]) }} "><i class='fa fa-trash'></i></a>
+                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_edit_db') }}" id="editTable" href=" {{ route('DataTables:ManageDataTable', ['dbGUID' => $db->id, 'tGUID' => $item->id]) }} "><i class='fa fa-pencil-square'></i></a>
+                                        <a class='ctrlPanel' title="{{ __('admin.getAllDBs_tables_of_db') }}" id="gotoRows" href=" ROW "><i class='fa fa-empire'></i></a>
                                     </td>
                                 </tr>
                             @endforeach

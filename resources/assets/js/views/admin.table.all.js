@@ -4,7 +4,7 @@ $(function () {
 
     let mainTarget = null;
 
-    var DBtable = $('#TablesLists').DataTable({
+    let DBtable = $('#TablesLists').DataTable({
         "paging": true,
         "lengthChange": true,
         "searching": true,
